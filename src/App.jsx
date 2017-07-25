@@ -4,6 +4,11 @@ import Message from './Message.jsx';
 import MessageList from './MessageList.jsx';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {loading: false};
+  }
+
   render() {
     console.log("Rendering <App/>");
     return (
