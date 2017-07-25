@@ -5,8 +5,8 @@ class MessageList extends Component {
   render() {
     console.log("Rendering <MessageList/>");
     const messagesArray = this.props.messages;
-    const messagesDivs = messagesArray.map((message) =>
-      <div>
+    const messagesDiv = messagesArray.map((message) =>
+      <div key={message.id}>
         <span className="message-username">{message.username}</span>
         <span className="message-content">{message.content}</span>
       </div>
@@ -14,7 +14,7 @@ class MessageList extends Component {
     return (
       <main className="messages">
         <div>
-          {messagesDivs}
+          {messagesDiv}
         </div>
       </main>
     );
