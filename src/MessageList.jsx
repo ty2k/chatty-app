@@ -6,7 +6,10 @@ class MessageList extends Component {
     console.log("Rendering <MessageList/>");
     const messagesArray = this.props.messages;
     const messagesDivs = messagesArray.map((message) =>
-      <div>{message.username}: {message.content}</div>
+      <div>
+        <span className="message-username">{message.username}</span>
+        <span className="message-content">{message.content}</span>
+      </div>
     );
     return (
       <main className="messages">
