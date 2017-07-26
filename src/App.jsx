@@ -25,6 +25,18 @@ class App extends Component {
     this.state = appData;
   }
 
+  addMessage(message) {
+    const newMessage = {
+      id: Math.random(),
+      username: this.state.currentUser.name,
+      content: message
+    };
+    const newMessages = this.state.messages.concat(newMessage);
+    this.setState({
+      messages: newMessages
+    });
+  }
+
   componentDidMount() {
     console.log("componentDidMount <App />");
     setTimeout(() => {
@@ -43,7 +55,7 @@ class App extends Component {
     return (
       <div>
         <MessageList messages={this.state.messages} />
-        <ChatBar currentUser={this.state.currentUser} />
+        <ChatBar currentUser={this.state.currentUser} addOneMessage={this.addMessage.bind(this)} />
       </div>
     );
   }
