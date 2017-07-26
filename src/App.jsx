@@ -19,6 +19,9 @@ const appData = {
   ]
 }
 
+const ws = new WebSocket("ws://0.0.0.0:3001/");
+
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -39,6 +42,12 @@ class App extends Component {
 
   componentDidMount() {
     console.log("componentDidMount <App />");
+
+    ws.onopen = function(event) {
+      console.log('Connected to server', event);
+      ws.send("Here's some text that the server is urgently awaiting!");
+    }
+
     setTimeout(() => {
       console.log("Simulating incoming message");
       // Add a new message to the list of messages in the data store
