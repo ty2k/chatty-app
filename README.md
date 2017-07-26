@@ -1,45 +1,31 @@
-React Boilerplate
-=====================
+# chatty-app
 
-A minimal and light dev environment for ReactJS.
+**chatty-app** is a single-page app to allow multiple users to chat in one window. It is built using ReactJS, and it uses my related WebSockets server [chatty-server](https://github.com/ty2k/chatty-server). Both project are coursework from [Lighthouse Labs](https://github.com/lighthouse-labs).
 
-### Usage
+Built on top of [Lighthouse Lab's React Simple Boilerplate](https://github.com/lighthouse-labs/react-simple-boilerplate?files=1).
 
-Clone the boilerplate and create your own git repo.
 
-```
-git clone git@github.com:lighthouse-labs/react-simple-boilerplate.git
-cd react-simple-boilerplate
-git remote rm origin
-git remote add origin [YOUR NEW REPOSITORY]
-# Manually update your package.json file
-```
+## Install
 
-Install the dependencies and start the server.
+`npm install`
 
-```
-npm install
-npm start
-open http://localhost:3000
-```
+## Run
 
-### Static Files
+`npm start`
 
-You can store static files like images, fonts, etc in the `build` folder.
+Open http://localhost:3000 in your browser.
 
-For example, if you copy a file called my_image.png into the build folder you can access it using `http://localhost:3000/build/my_image.png`.
+## Notes
 
-### Linting
+[chatty-server](https://github.com/ty2k/chatty-server) uses port 3001, chatty-app client uses port 3000.
 
-This boilerplate project includes React ESLint configuration.
-
-```
-npm run lint
-```
-
-### Dependencies
+## Dependencies
 
 * React
 * Webpack
 * [babel-loader](https://github.com/babel/babel-loader)
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+
+## Contact the Author
+
+[Tyler Krys](https://tylerkrys.ca) made this to learn about web development.
