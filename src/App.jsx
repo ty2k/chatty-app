@@ -19,7 +19,6 @@ class App extends Component {
 
   addMessage(message) {
     const newMessage = {
-      id: Math.round(Math.random() * 10000000000),
       username: this.state.currentUser.name,
       content: message
     };
