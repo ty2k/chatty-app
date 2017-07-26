@@ -30,10 +30,13 @@ class App extends Component {
 
   addMessage(message) {
     const newMessage = {
-      id: Math.random(),
+      id: Math.round(Math.random() * 10000000000),
       username: this.state.currentUser.name,
       content: message
     };
+    ws.send(`New message from ${newMessage.username}: "${newMessage.content}"`);
+    console.log("A new message has been sent: ")
+    console.log(newMessage);
     const newMessages = this.state.messages.concat(newMessage);
     this.setState({
       messages: newMessages
