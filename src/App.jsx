@@ -5,18 +5,7 @@ import MessageList from './MessageList.jsx';
 
 const appData = {
   currentUser: {name: "Bob"}, // optional. if currentUser is not defined, it means the user is Anonymous
-  messages: [
-    {
-      id: 1,
-      username: "Bob",
-      content: "Has anyone seen my marbles?",
-    },
-    {
-      id: 2,
-      username: "Anonymous",
-      content: "No, I think you lost them. You lost your marbles Bob. You lost them for good."
-    }
-  ]
+  messages: [] // messages coming from the server will be stored here as they arrive
 }
 
 const ws = new WebSocket("ws://0.0.0.0:3001/");
@@ -34,7 +23,7 @@ class App extends Component {
       username: this.state.currentUser.name,
       content: message
     };
-    ws.send(`New message from ${newMessage.username}: "${newMessage.content}"`);
+    ws.send(JSON.stringify(newMessage));
     console.log("A new message has been sent: ")
     console.log(newMessage);
     const newMessages = this.state.messages.concat(newMessage);
@@ -48,7 +37,7 @@ class App extends Component {
 
     ws.onopen = function(event) {
       console.log('Connected to server', event);
-      ws.send("Here's some text that the server is urgently awaiting!");
+      //ws.send("Here's some text that the server is urgently awaiting!");
     }
 
     setTimeout(() => {
