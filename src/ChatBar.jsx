@@ -8,7 +8,8 @@ class ChatBar extends Component {
         <input className="chatbar-username" defaultValue={this.props.currentUser.name} placeholder="Your Name (Optional)" />
         <input className="chatbar-message" placeholder="Type a message and hit ENTER" onKeyDown={(event) => {
           if (event.key === 'Enter') {
-            alert('That\'s the enter key!');
+            this.props.addOneMessage(event.target.value);
+            event.target.value = '';
           }
         }} />
       </footer>
