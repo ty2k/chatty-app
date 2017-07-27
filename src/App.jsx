@@ -31,18 +31,20 @@ class App extends Component {
 
   changeUser(user) {
     let originalUser = this.state.currentUser.name;
-    let newUser = user;
+    // If a user hasn't entered a name, assign them "Anonymous"
+    let newUser = user || "Anonymous";
     this.setState({
-      currentUser: {name: user}
+      currentUser: {name: newUser}
     });
-    console.log("Current user changed to " + user);
+    console.log("Current user changed to " + newUser);
     // Send a postNotification message to the server
-    let notificationStatement = (`${originalUser} changed their name to ${user}.`);
+    let notificationStatement = (`${originalUser} changed their name to ${newUser}.`);
     console.log("notificationStatement: ");
     console.log(notificationStatement);
     let userChangeNotification = {
       type: "postNotification",
-      content: "UserA has changed their name to UserB."
+      id: new Date(),
+      content: notificationStatement
     };
     ws.send(JSON.stringify(userChangeNotification));
   }
@@ -56,12 +58,12 @@ class App extends Component {
     ws.onmessage = (event) => {
       console.log("Event: ");
       console.log(event);
-      console.log("event.data: ");
-      const incomingMessage = event.data;
-      console.log(incomingMessage);
+      let data = JSON.parse(event.data);
+      console.log("data variable: ");
+      console.log(data);
       console.log("this.state: ");
       console.log(this.state);
-      const updatedMessages = this.state.messages.concat(JSON.parse(incomingMessage));
+      const updatedMessages = this.state.messages.concat(data);
       this.setState({
         messages: updatedMessages
       });
