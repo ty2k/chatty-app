@@ -28,6 +28,13 @@ class App extends Component {
     console.log(newMessage);
   }
 
+  changeUser(user) {
+    this.setState({
+      currentUser: {name: user}
+    });
+    console.log("Current user changed to " + user);
+  }
+
   componentDidMount() {
     console.log("componentDidMount <App />");
     ws.onopen = function(event) {
@@ -54,7 +61,7 @@ class App extends Component {
     return (
       <div>
         <MessageList messages={this.state.messages} />
-        <ChatBar currentUser={this.state.currentUser} addOneMessage={this.addMessage.bind(this)} />
+        <ChatBar currentUser={this.state.currentUser} addOneMessage={this.addMessage.bind(this)} changeCurrentUser={this.changeUser.bind(this)} />
       </div>
     );
   }
