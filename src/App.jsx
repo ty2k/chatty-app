@@ -19,6 +19,7 @@ class App extends Component {
 
   addMessage(message) {
     const newMessage = {
+      type: "postMessage",
       id: new Date(),
       username: this.state.currentUser.name,
       content: message
