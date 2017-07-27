@@ -2,13 +2,30 @@ import React, {Component} from 'react';
 
 class Message extends Component {
   render() {
+    let message = this.props.message;
     console.log("Rendering <Message/>");
-    return (
-      <div className="message">
-        <span className="message-username">{this.props.message.username}</span>
-        <span className="message-content">{this.props.message.content}</span>
-      </div>
-    );
+    switch(message.type) {
+      case "incomingMessage":
+        // Messages get rendered with spans around username and content
+        return (
+          <div className="message">
+            <span className="message-username">{message.username}</span>
+            <span className="message-content">{message.content}</span>
+          </div>
+        );
+        break;
+      case "incomingNotification":
+        // Notifications get rendered as line extra "system" class
+        return (
+          <div className="message system">
+           {message.content}
+          </div>
+        );
+        break;
+      default:
+        // If message type is unknown, throw error
+        throw new Error("Unknown event type " + message.type);
+    }
   }
 }
 export default Message;
