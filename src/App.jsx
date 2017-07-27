@@ -30,10 +30,21 @@ class App extends Component {
   }
 
   changeUser(user) {
+    let originalUser = this.state.currentUser.name;
+    let newUser = user;
     this.setState({
       currentUser: {name: user}
     });
     console.log("Current user changed to " + user);
+    // Send a postNotification message to the server
+    let notificationStatement = (`${originalUser} changed their name to ${user}.`);
+    console.log("notificationStatement: ");
+    console.log(notificationStatement);
+    let userChangeNotification = {
+      type: "postNotification",
+      content: "UserA has changed their name to UserB."
+    };
+    ws.send(JSON.stringify(userChangeNotification));
   }
 
   componentDidMount() {
