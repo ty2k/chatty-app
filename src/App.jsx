@@ -26,29 +26,27 @@ class App extends Component {
     ws.send(JSON.stringify(newMessage));
     console.log("A new message has been sent: ")
     console.log(newMessage);
-    const newMessages = this.state.messages.concat(newMessage);
-    this.setState({
-      messages: newMessages
-    });
   }
 
   componentDidMount() {
     console.log("componentDidMount <App />");
-
     ws.onopen = function(event) {
       console.log('Connected to server', event);
       //ws.send("Here's some text that the server is urgently awaiting!");
     }
-
-    setTimeout(() => {
-      console.log("Simulating incoming message");
-      // Add a new message to the list of messages in the data store
-      const newMessage = {id: 3, username: "Michelle", content: "Hello there!"};
-      const messages = this.state.messages.concat(newMessage)
-      // Update the state of the app component.
-      // Calling setState will trigger a call to render() in App and all child components.
-      this.setState({messages: messages})
-    }, 3000);
+    ws.onmessage = (event) => {
+      console.log("Event: ");
+      console.log(event);
+      console.log("event.data: ");
+      const incomingMessage = event.data;
+      console.log(incomingMessage);
+      console.log("this.state: ");
+      console.log(this.state);
+      const updatedMessages = this.state.messages.concat(JSON.parse(incomingMessage));
+      this.setState({
+        messages: updatedMessages
+      });
+    }
   }
 
   render() {
