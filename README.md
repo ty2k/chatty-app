@@ -18,6 +18,10 @@ Open http://localhost:3000 in your browser.
 
 [chatty-server](https://github.com/ty2k/chatty-server) uses port 3001, chatty-app client uses port 3000.
 
+## Screenshot
+
+![Screenshot of Chatty App's index view](https://raw.githubusercontent.com/ty2k/chatty-app/master/docs/Screenshot-Chatty-App-index.png)
+
 ## Dependencies
 
 * React
