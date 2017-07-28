@@ -5,24 +5,36 @@ import MessageList from './MessageList.jsx';
 import NavBar from './NavBar.jsx';
 import UserCount from './UserCount.jsx';
 
+// appData will become available in this.state
 const appData = {
-  // Setting currentUser here is optional; if currentUser is not defined, it is set to Anonymous
+  // Setting a name explicitly is option; if currentUser is not defined, it is set to Anonymous
   currentUser: {name: "Bob"},
-  // Messages coming from the server will be added to this array as they arrive
   messages: [],
-  // The userCount gets updated on each client connection opened and closed
   userCount: 0
 }
 
 const ws = new WebSocket("ws://0.0.0.0:3001/");
 
+
+////////////////////////////////////
+//   React App Parent Component   //
+////////////////////////////////////
+
+
+// App holds all React components and helper functions that require this.state
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = appData;
   }
 
-  // When given a message string, create a new message object and send it
+
+  /////////////////////////////////////////////////
+  //    Helper Functions requiring this.state    //
+  /////////////////////////////////////////////////
+
+
+  // When given a message string, send a message object to the WebSocket server
   addMessage(message) {
     const newMessage = {
       type: "postMessage",
@@ -35,6 +47,7 @@ class App extends Component {
     console.log(newMessage);
   }
 
+  // When given a new username, send a notification object to the WebSocket server
   changeUser(user) {
     let originalUser = this.state.currentUser.name;
     // If a user hasn't entered a name, assign them "Anonymous"
@@ -44,8 +57,6 @@ class App extends Component {
     });
     console.log("Current user changed to " + newUser);
     let notificationStatement = (`${originalUser} changed their name to ${newUser}.`);
-    console.log("notificationStatement: ");
-    console.log(notificationStatement);
     let userChangeNotification = {
       type: "postNotification",
       id: new Date(),
@@ -54,27 +65,33 @@ class App extends Component {
     ws.send(JSON.stringify(userChangeNotification));
   }
 
+
+  /////////////////////////////////////////////
+  //    React Component Lifecycle Methods    //
+  /////////////////////////////////////////////
+
+
+  // On successful connection, wait for incoming messages from server
   componentDidMount() {
     console.log("componentDidMount <App />");
     ws.onopen = function(event) {
       console.log('Connected to server', event);
     }
+    // On receiving a new message, choose how to handle it based on its type
     ws.onmessage = (event) => {
-      console.log("Event: ");
+      console.log("Received event: ");
       console.log(event);
       let data = JSON.parse(event.data);
-      console.log("data variable: ");
-      console.log(data);
-      console.log("this.state: ");
-      console.log(this.state);
       switch(data.type) {
+        // For userCountUpdate messages, adjust the userCount to new value
         case "userCountUpdate":
           const updatedUserCount = data.content;
           this.setState({
             userCount: updatedUserCount
           });
           console.log("Updated User Count inside switch!");
-          break
+          break;
+        // For incomingMessage and incomingNotification messages, add to the messages array
         case "incomingMessage":
         case "incomingNotification":
           const updatedMessages = this.state.messages.concat(data);
