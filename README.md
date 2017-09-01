@@ -1,8 +1,8 @@
 # chatty-app
 
-**chatty-app** is a single-page app to allow multiple users to chat in one window. It is built using ReactJS, and it uses my related WebSockets server [chatty-server](https://github.com/ty2k/chatty-server). Both projects are coursework from [Lighthouse Labs](https://github.com/lighthouse-labs).
+**chatty-app** is a single-page app to allow multiple users to chat in one window. It is built using React, and it uses my related WebSockets server [chatty-server](https://github.com/ty2k/chatty-server). Both projects are coursework from [Lighthouse Labs](https://github.com/lighthouse-labs).
 
-Built on top of [Lighthouse Lab's React Simple Boilerplate](https://github.com/lighthouse-labs/react-simple-boilerplate?files=1).
+Built on top of [Lighthouse Lab's React Simple Boilerplate](https://github.com/lighthouse-labs/react-simple-boilerplate).
 
 ## Install
 
@@ -24,8 +24,8 @@ Open http://localhost:3000 in your browser.
 
 ## Dependencies
 
-* React
-* Webpack
+* [React](https://www.npmjs.com/package/react)
+* [Webpack](https://www.npmjs.com/package/webpack)
 * [babel-loader](https://github.com/babel/babel-loader)
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
 
