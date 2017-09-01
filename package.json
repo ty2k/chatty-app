@@ -1,7 +1,7 @@
 {
   "name": "chatty-app",
   "version": "1.0.0",
-  "description": "ReactJS single page chat app using WebSocket to go with my WebSocket chatty-server, built on on react-simple-boilerplate",
+  "description": "React single page chat app using WebSocket to go with my WebSocket chatty-server",
   "scripts": {
     "lint": "eslint --ext .jsx,.js src",
     "start": "node server.js"
