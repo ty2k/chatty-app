@@ -1,22 +1,26 @@
 # chatty-app
 
-**chatty-app** is a single-page app to allow multiple users to chat in one window. It is built using React, and it uses my related WebSockets server [chatty-server](https://github.com/ty2k/chatty-server). Both projects are coursework from [Lighthouse Labs](https://github.com/lighthouse-labs).
+**chatty-app** is a single-page app to allow multiple users to chat in one window. It is built using React, and it uses my related WebSockets server [chatty-server](https://github.com/ty2k/chatty-server).
 
 Built on top of [Lighthouse Lab's React Simple Boilerplate](https://github.com/lighthouse-labs/react-simple-boilerplate).
 
 ## Install
 
-`npm install`
+Clone this repository and `npm install`.
 
 ## Run
 
-`npm start`
+`npm run start`, then open http://localhost:3000 in your browser.
 
-Open http://localhost:3000 in your browser.
+Note that server-dependent functions will not work without [chatty-server](https://github.com/ty2k/chatty-server) running.
+
+## Linting
+
+`npm run lint` to run ESLint rules against the project files.
 
 ## Notes
 
-[chatty-server](https://github.com/ty2k/chatty-server) uses port 3001, chatty-app client uses port 3000.
+By default, [chatty-server](https://github.com/ty2k/chatty-server) uses port 3001 while chatty-app client uses port 3000.
 
 ## Screenshot
 
@@ -31,4 +35,4 @@ Open http://localhost:3000 in your browser.
 
 ## Contact the Author
 
-[Tyler Krys](https://tylerkrys.ca) made this to learn about web development.
+[Tyler Krys](https://tylerkrys.ca) made this.
