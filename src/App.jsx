@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import ChatBar from './ChatBar.jsx';
 import MessageList from './MessageList.jsx';
 import NavBar from './NavBar.jsx';
-import UserCount from './UserCount.jsx';
 
 const appData = {
   currentUser: {name: 'Anonymous'},
@@ -72,17 +71,15 @@ class App extends Component {
       switch(data.type) {
         // For userCountUpdate messages, adjust the userCount to new value
         case 'userCountUpdate':
-          const updatedUserCount = data.content;
           this.setState({
-            userCount: updatedUserCount
+            userCount: data.content
           });
           break;
         // For incomingMessage and incomingNotification messages, add to the messages array
         case 'incomingMessage':
         case 'incomingNotification':
-          const updatedMessages = this.state.messages.concat(data);
           this.setState({
-            messages: updatedMessages
+            messages: this.state.messages.concat(data)
           });
           break;
         default:

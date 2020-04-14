@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 class Message extends Component {
   render() {
@@ -12,7 +13,6 @@ class Message extends Component {
             <span className="message-content">{message.content}</span>
           </div>
         );
-        break;
       case 'incomingNotification':
         // Notifications get rendered as line extra "system" class
         return (
@@ -20,11 +20,19 @@ class Message extends Component {
            {message.content}
           </div>
         );
-        break;
       default:
         // If message type is unknown, throw error
         throw new Error('Unknown event type ' + message.type);
     }
   }
 }
+
+Message.propTypes = {
+  message: {
+    content: PropTypes.string,
+    type: PropTypes.string,
+    username: PropTypes.string
+  }
+}
+
 export default Message;
