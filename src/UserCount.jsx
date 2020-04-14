@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 class UserCount extends Component {
   render() {
@@ -9,4 +10,9 @@ class UserCount extends Component {
     );
   }
 }
+
+UserCount.propTypes = {
+  userCount: PropTypes.number.isRequired
+}
+
 export default UserCount;

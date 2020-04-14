@@ -6,8 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.5] - 2020-04-13
 ### Added
-- `CHANGELOG.md` added for v1.0.5.
-- `.nvmrc` added with Node v12.16.2.
+- File `CHANGELOG.md` added for v1.0.5.
+- File `.nvmrc` added with Node v12.16.2.
+- Added to dependencies:
+  - `prop-types` at v15.7.2 to fix linting errors with missing props validation.
 
 ### Changed
 - Updates to dependencies:
