@@ -32,7 +32,7 @@
     "css-loader": "4.2.0",
     "eslint": "7.6.0",
     "eslint-plugin-react": "7.20.5",
-    "node-sass": "4.14.1",
+    "node-sass": "7.0.0",
     "sass-loader": "9.0.2",
     "sockjs-client": "1.4.0",
     "style-loader": "1.2.1",
